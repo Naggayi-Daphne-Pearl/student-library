@@ -10,9 +10,16 @@ router.get('/home', (req,res) => {
 
 
 // Logout form
-router.get('/logout', function(req, res) {
-  req.logout();
-  res.redirect('/login');
+// router.get('/logout', function(req, res) {
+//   req.logout();
+//   res.redirect('/login');
+// });
+
+router.post('/logout', function(req, res) {
+  req.logout(function(err) {
+    if (err) { return (err); }
+    res.redirect('/login');
+  });
 });
 
 // gives access to someone to access our router
