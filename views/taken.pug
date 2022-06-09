@@ -1,0 +1,51 @@
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title CAR PARKING UNIT
+  // bootstrap CSS
+  link(rel='stylesheet' href='/bootstrap-5.1.3-dist/css/bootstrap.css')
+  // flatpickr for selecting date and time
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css')
+  link(rel='stylesheet' href='/css/index.css')
+.topnav
+  .left
+    a.active(href='/home') REFACTORY LIBRARY
+  .right
+    a(href='/logout') LOG OUT
+    a(href='/reportS') REPORTS
+    a(href='/home') HOME
+.container
+  .title BOOKS TAKEN 
+  form(action='/taken' name='taken' method='POST')
+    .user-details
+      .input-box
+        span.details Name Of student
+        input(typeofcar='text' placeholder='Enter Your Full Name' name='username')
+      .input-box
+        span.details Phone Number
+        input(typeofcar='text' placeholder='070 XXXXXXX' name='phonenumber')
+      .input-box
+        span.details Student Card Number
+        input(typeofcar='text' placeholder='NIN NUMBER' name='nin')
+      .input-box
+        span.details Book Returned 
+        input(typeofcar='text' placeholder='book taken' name='booktaken')
+      .input-box
+        span.details Date and Time
+        // date and time
+        input(typeofcar='datetime-local' placeholder='Select Date' name='datetime ')
+      .input-box
+        span.details Cohort 
+        input#slot(typeofcar='number' placeholder='eg 10' name='cohort')
+      .button
+        input(type='Submit' value='Register')
+script(src='/bootstrap-5.1.3-dist/js/bootstrap.js')
+// This will initate date and time in our form
+script(src='https://cdn.jsdelivr.net/npm/flatpickr')
+script.
+  config ={
+  enableTime: true,
+  dateFormat: "Y-m-d H:i",
+  }
+  flatpickr("input=[type=datetime-local", {});
