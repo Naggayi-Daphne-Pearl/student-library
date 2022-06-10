@@ -14,7 +14,7 @@ const expressSession = require('express-session')({
 
 const app = express(); 
 
-const config = require ('./config/config'); 
+// const config = require ('./config/config'); 
 const register = require('./routes/signup');
 const login = require('./routes/login'); 
 const home = require('./routes/home');
@@ -23,16 +23,16 @@ const taken = require('./routes/taken');
 const received = require('./routes/received'); 
 const reports = require('./routes/reports');
 
-mongoose.connect(config.database);
-const db = mongoose.connection; 
+// mongoose.connect(config.database);
+// const db = mongoose.connection; 
 
-db.once('open', () => {
-   logger.info('connected successfully');
-})
+// db.once('open', () => {
+//    logger.info('connected successfully');
+// })
 
-db.on('error', (err) => {
-    logger.error(err);
-})
+// db.on('error', (err) => {
+//     logger.error(err);
+// })
 
 app.engine('pug', require('pug').__express); 
 app.set('view engine', 'pug'); 
@@ -63,9 +63,10 @@ app.get('*', (req, res) => {
   });
 
 
-app.listen (4000, () => {
-    logger.info('listening at port 4000');
-})
+const port = process.env.PORT || 5000;
+  application.listen(port, () => {
+      console.log(`Listening at port ${port}`);
+  });
 
 
 
